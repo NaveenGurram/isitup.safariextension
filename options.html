@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Is It Up Options</title>
+    <!-- Cascading Style Sheets -->
+    <link href="css/bootstrap.3.3.5.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-theme.3.3.5.min.css" rel="stylesheet" />
+    <link href="css/isitup.css" rel="stylesheet" />
+</head>
+
+<body>
+        <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+            <form class="form-horizontal">
+            <fieldset>
+                <legend align=center>Is It Up Options Page</legend>
+                <div class="form-group">
+    
+                </div>  
+
+            <div class="form-group" id="btnGroup">
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-4"> 
+                    <input id="saveBtn" value="Save" name="saveBtn" type="button" type="submit" class="btn-success"/>
+                    <input id="resetBtn" value="Reset" name="resetBtn" type="reset" class="btn-default"/>
+                </div>
+            </div>  
+            <!-- status -->
+            <div class="form-group">
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-8">
+                    <div id="status" class="success"></div>
+                </div>
+            </div>          
+
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="allowIndividualRetry">
+                        Allow individual Retry
+                    </label>
+                <div class="col-md-8">
+                    <label class="radio-inline" for="allowIndividualRetry-0">
+                            <input type="radio" name="allowIndividualRetry" id="allowIndividualRetry-0" value="Yes" checked="checked"/>
+                            Yes
+                        </label>
+                    <label class="radio-inline" for="allowIndividualRetry-1">
+                            <input type="radio" name="allowIndividualRetry" id="allowIndividualRetry-1" value="No"/>
+                            No
+                    </label>
+                </div>
+            </div>
+             <div class="form-group"> 
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-8">
+                    <small class="text-muted">Ability to retry individual url?</small>
+                </div>
+            </div>           
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="allowAutomaticRefresh">
+                        Allow automatic page refresh
+                    </label>
+                <div class="col-md-8">
+                    <label class="radio-inline" for="allowAutomaticRefresh-0">
+                            <input type="radio" name="allowAutomaticRefresh" id="allowAutomaticRefresh-0" value="Yes"/>
+                            Yes
+                        </label>
+                    <label class="radio-inline" for="allowAutomaticRefresh-1">
+                            <input type="radio" name="allowAutomaticRefresh" id="allowAutomaticRefresh-1" value="No" checked="checked"/>
+                            No
+                    </label>
+                </div>
+            </div>
+            <div class="form-group"> 
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-8">
+                    <small class="text-muted">Allow page refresh?</small>
+                </div>
+            </div>            
+             <div class="form-group" id="pageRefreshAfterId" style="display:none">
+                <label class="col-md-3 control-label" for="pageRefreshAfter">
+                        Refresh Page after?
+                    </label>
+                <div class="col-md-8">
+                    <input id="pageRefreshAfter" name="pageRefreshAfter" type="number" placeholder="30" class="form-control input-md" size="10" />
+                <small class="text-muted">Time in seconds. </small>
+                </div>
+            </div>           
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="pushNotifications">
+                        Push Notifications
+                    </label>
+                <div class="col-md-8">
+                    <label class="radio-inline" for="pushNotifications-0">
+                            <input type="radio" name="pushNotifications" id="pushNotifications-0" value="Yes"/>
+                            Yes
+                        </label>
+                    <label class="radio-inline" for="pushNotifications-1">
+                            <input type="radio" name="pushNotifications" id="pushNotifications-1" value="No" checked="checked"/>
+                            No
+                    </label>  
+                </div>
+            </div> 
+            <div class="form-group"> 
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-8">
+                    <small class="text-muted">Do you want Notifications when an url goes down?</small>
+                </div>
+            </div>
+            <!-- JSON File-->
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="confFileUpld">JSON File</label>
+                <div class="col-md-4">
+                    <input id="confFileUpld" name="confFileUpld" type="file" class="form-control input-md" />
+                    <small class="text-muted">Upload configuration file or paste below</small>
+                </div>
+            </div>                    
+
+            <div class="form-group" id="cfgTxt">
+                <label class="col-md-3 control-label" for="cfgTxt">
+                        Configuration Text
+                    </label>
+                <div class="col-md-8">
+                    <textarea id="cfgTxt" name="cfgTxt" class="form-control input-md" cols="80" rows="20"></textarea>
+                    <small class="text-muted">Paste or upload file</small>
+                </div>
+            </div>
+
+                </form>    
+            </div>    
+        </div> <!-- row end -->      
+        </div>    
+    <!-- Scripts -->
+    <script src="js/jquery.2.4.1.min.js"></script>
+    <script src="js/bootstrap.3.3.5.min.js"></script>
+    <script src="js/options.js"></script>
+
+</body>
+
+</html>

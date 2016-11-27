@@ -1,0 +1,14 @@
+    <script>
+// Set up the Listener
+safari.application.addEventListener("command", performCommand, false);
+
+ 
+// Function to perform when event is received
+function performCommand(event) {
+    // Make sure event comes from the button
+    if (event.command == "open-isitup") {
+        var newTab = safari.application.activeBrowserWindow.openTab();
+        newTab.url = safari.extension.baseURI + 'isitup.html';
+    }
+}
+</script>

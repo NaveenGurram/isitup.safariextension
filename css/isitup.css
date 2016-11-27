@@ -1,0 +1,42 @@
+/**
+ * Chrome Extension Twitter Bootstrap 3 Template
+ * Custom CSS
+ *	
+ */
+
+
+.status-code {
+  color: black;
+  margin: 0;
+  padding: 3px;
+  text-align: center;
+  height: 1.5em;
+  border-radius: 10px;
+  height: 20px;
+  width: 35px;
+  cursor: pointer;
+  text-indent: 0;
+  line-height: 16px;
+  display: inline-block;
+  background-color: red;
+  font-size: small;  
+}
+.success{
+  background-color: green;
+  color: #fff;
+}
+.refresh{
+  background-color: transparent;
+}
+
+.error {
+  background-color: red;
+  color: white;
+}
+
+.na {
+  background-color: grey;
+  color: white;
+}
+
+

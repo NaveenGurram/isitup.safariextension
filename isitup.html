@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Is It Up!</title>
+    <!-- Cascading Style Sheets -->
+    <link href="css/bootstrap.3.3.5.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-theme.3.3.5.min.css" rel="stylesheet" />
+    <link href="css/isitup.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <h4>Environment Status</h4>
+            </div>
+            <div class="col-md-8"></div>
+            <div class="col-md-1">
+                <h4><small><a href='./options.html' target='_blank'>Options</a></small></h4>
+            </div>
+            <div class="col-md-1">
+                <h4><small><a href='./help.html' target='_blank'>Help</a></small></h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class='table-responsive' id="isitupId"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <h4 id='health' style="display:none">Health Check Output</h4>
+                <p>
+                    <pre style="display:none" id="status-detail"></pre>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="js/jquery.2.4.1.min.js"></script>
+    <script src="js/bootstrap.3.3.5.min.js"></script>
+    <script src="js/isitup.js"></script>
+
+</body>
+
+</html>
