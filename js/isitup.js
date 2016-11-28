@@ -13,7 +13,7 @@ $(document).ready(function() {
     items.allowIndividualRetry = isItTrue(allowIndividualRetry);
     items.allowAutomaticRefresh = isItTrue(allowAutomaticRefresh);
     items.pushNotifications = isItTrue(pushNotifications);
-    items.pageRefreshAfter = isItTrue(pageRefreshAfter);
+    items.pageRefreshAfter = pageRefreshAfter;
     items.cfgTxt = cfgTxt;
     doProcess(items);
 
@@ -143,6 +143,7 @@ function checkHealth(spanIdMap, pushNotifications) {
                     jsonObj.url = value;
                     spanData = stringify(jsonObj);
                 }
+                $('#' + key).removeClass("status-code error");
                 $('#' + key).addClass("status-code success");
                 $('#' + key).attr('data', spanData);
                 $('#' + key).text("200");
