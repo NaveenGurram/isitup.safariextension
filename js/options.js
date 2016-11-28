@@ -1,8 +1,6 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
     document.getElementById('confFileUpld').addEventListener('change', readSingleFile, false);
-
-    alert('there are ' + localStorage.length + ' items in the storage array.');
 
     var allowIndividualRetry = localStorage.getItem("allowIndividualRetry");
     var allowAutomaticRefresh = localStorage.getItem("allowAutomaticRefresh");
@@ -12,32 +10,33 @@ $(document).ready(function () {
 
     if (cfgTxt) {
         $("textarea[name='cfgTxt']").val(cfgTxt);
-    }
-    else {
-        jQuery.get("conf/defaultConf.json", function (data) {
+    } else {
+        jQuery.get("conf/defaultConf.json", function(data) {
             $("textarea[name='cfgTxt']").val(data);
         });
     }
 
 
-    if (allowIndividualRetry) {
+    if (allowIndividualRetry === 'true') {
         $('#pageRefreshAfterId').show();
+    } else {
+        pageRefreshAfter = 0;
     }
     $('#pageRefreshAfter').val(pageRefreshAfter);
 
-    if (allowIndividualRetry) {
+    if (allowIndividualRetry === 'true') {
         $('#allowIndividualRetry-0').prop('checked', true);
     } else {
         $('#allowIndividualRetry-1').prop('checked', true);
     }
 
-    if (allowAutomaticRefresh) {
+    if (allowAutomaticRefresh === 'true') {
         $('#allowAutomaticRefresh-0').prop('checked', true);
     } else {
         $('#allowAutomaticRefresh-1').prop('checked', true);
     }
 
-    if (pushNotifications) {
+    if (pushNotifications === 'true') {
         $('#pushNotifications-0').prop('checked', true);
     } else {
         $('#pushNotifications-1').prop('checked', true);
@@ -45,15 +44,16 @@ $(document).ready(function () {
 
 
     // when allow automatic refresh is enabled
-    $('input:radio[name="allowAutomaticRefresh"]').change(function () {
+    $('input:radio[name="allowAutomaticRefresh"]').change(function() {
         if ($(this).val() == 'Yes') {
             $('#pageRefreshAfterId').show();
         } else {
+            $('#pageRefreshAfter').val(0);
             $('#pageRefreshAfterId').hide();
         }
     });
     // when saved
-    $('#saveBtn').click(function () {
+    $('#saveBtn').click(function() {
         var allowIndividualRetry = ($("input[name=allowIndividualRetry]:checked").val() === 'Yes');
         var allowAutomaticRefresh = ($("input[name=allowAutomaticRefresh]:checked").val() === 'Yes');
         var pushNotifications = ($("input[name=pushNotifications]:checked").val() === 'Yes');
@@ -63,18 +63,16 @@ $(document).ready(function () {
         localStorage.setItem("allowIndividualRetry", allowIndividualRetry);
         localStorage.setItem("allowAutomaticRefresh", allowAutomaticRefresh);
         localStorage.setItem("pushNotifications", pushNotifications);
-        if(allowAutomaticRefresh){
-            localStorage.setItem("pageRefreshAfter", pageRefreshAfter);
-        }else{
-            localStorage.setItem("pageRefreshAfter", 0);
+        if (!allowAutomaticRefresh) {
+            pageRefreshAfter = 0;
         }
-
+        localStorage.setItem("pageRefreshAfter", pageRefreshAfter);
         localStorage.setItem("cfgTxt", cfgTxt);
 
-        setTimeout(function () {
+        setTimeout(function() {
             status.textContent = '';
         }, 5000);
-        setTimeout(function () {
+        setTimeout(function() {
             window.close();
         }, 1000)
     });
@@ -87,13 +85,12 @@ function readSingleFile(evt) {
     var f = evt.target.files[0];
     if (f) {
         var r = new FileReader();
-        r.onload = function (e) {
+        r.onload = function(e) {
             var contents = e.target.result;
             var isJson = true;
             try {
                 var json = $.parseJSON(contents);
-            }
-            catch (err) {
+            } catch (err) {
                 isJson = false;
             }
             if (isJson) {
@@ -107,4 +104,3 @@ function readSingleFile(evt) {
         alert("Failed to load file");
     }
 }
-
