@@ -1,6 +1,7 @@
 var notApplicable = "N/A";
 var gifLoadingEle = "<img src='./img/ajax-loader.gif'>";
 var healthResp = "Only Json is displayed";
+var appCompMap = {};
 
 $(document).ready(function() {
     var items = {};
@@ -37,6 +38,7 @@ function doProcess(items) {
     }
     if (hrows.length == 0) {
         setErrorText("Horizontal columns are empty. Please check configuration");
+        return;
     }
     for (var i = 0; i < configuration.rows.length; i++) {
         if (configuration.rows[i].cols.length != hcols.length) {
@@ -57,6 +59,7 @@ function doProcess(items) {
 
     var spanIdMap = {};
 
+
     $.each(componentMap, function(key, value) {
         isitupHtml += ("<tr><td><b>" + key + "</b></td>");
         for (var i = 0; i < value.length; i++) {
@@ -76,6 +79,7 @@ function doProcess(items) {
                 }
                 isitupHtml += "</td>";
                 spanIdMap[spanId] = value[i].healthUrl;
+                appCompMap[spanId] = (key + " " + hcols[i]);
             } else {
                 isitupHtml += ("<td><span class='status-code na'>" + notApplicable + "</span></td>");
             }
@@ -168,7 +172,7 @@ function checkHealth(spanIdMap, pushNotifications) {
                 }
                 errMsg += "URL is " + value;
                 if (pushNotifications) {
-                    sendNotification((key + " is down!!!"), errMsg);
+                    sendNotification((appCompMap[key] + " is down!!!"), errMsg);
                 }
             },
             complete: function() {
